@@ -39,11 +39,11 @@ class TestApp:
         response = app.test_client().get('/count/5')
         assert(response.status_code == 200)
 
-    def test_count_range_10(self):
-        '''counts through range of parameter in "/count/<parameter" on separate lines.'''
-        response = app.test_client().get('/count/10')
-        count = '0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n'
-        assert(response.data.decode() == count)
+    def test_count_10(self):
+       response = app.test_client().get('/count/10')
+       assert response.data == b'["0","1","2","3","4","5","6","7","8","9","10"]\n'
+
+
 
     def test_math_route(self):
         '''has a resource available at "/math/<parameters>".'''

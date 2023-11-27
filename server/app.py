@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-# app/app.py
-# app/app.py
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -17,8 +15,11 @@ def print_string(param):
 
 @app.route('/count/<int:param>')
 def count(param):
-    numbers = '\n'.join(map(str, range(param + 1)))
+    numbers = []
+    for i in range(param + 1):
+        numbers.append(str(i))
     return numbers
+
 
 @app.route('/math/<int:num1>/<operation>/<int:num2>')
 def math(num1, operation, num2):
